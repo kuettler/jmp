@@ -1,12 +1,14 @@
 (declare-project
   :name "jmp"
-  :description ```A wrapper around the GNU multiple precision arithmetic library ```
-  :version "0.0.0")
+  :description ```A wrapper around the GNU multiple precision arithmetic library```
+  :version "0.0.1")
 
-(declare-source
-  :prefix "jmp"
-  :source ["jmp/init.janet"])
+(def cflags '[])
+(def lflags '["-lgmp"])
 
 (declare-native
-  :name "jmp-native"
-  :source @["c/module.c"])
+  :name "jmp"
+  :source @["c/mpz.c"]
+  :cflags [;default-cflags ;cflags]
+  :lflags [;default-lflags ;lflags]
+  )
